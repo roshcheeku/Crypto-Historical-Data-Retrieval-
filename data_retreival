@@ -1,0 +1,52 @@
+This Python script is designed to fetch historical cryptocurrency data from an API, calculate various market metrics based on that data, and then export the results to an Excel file. Here’s a structured explanation of the code and its logic:
+
+### Step-by-Step Explanation
+
+1. **Importing Required Libraries**:
+   - `os`: To access environment variables.
+   - `requests`: For making HTTP requests to fetch data from the API.
+   - `pandas`: For data manipulation and analysis using DataFrames.
+   - `datetime`: To manage date and time conversions.
+   - `openpyxl`: To handle Excel file operations.
+
+2. **Function to Fetch Cryptocurrency Data**:
+   - **`fetch_crypto_data(crypto_pair, start_date)`**:
+     - Takes two inputs: `crypto_pair` (a string representing the cryptocurrency pair, e.g., 'BTC/USD') and `start_date` (a string for the date in 'YYYY-MM-DD' format).
+     - Retrieves an API key from the environment variables. If the key is not set, it raises a `ValueError`.
+     - Converts the provided start date into a UNIX timestamp for the API request.
+     - Constructs the request URL and parameters, including:
+       - The base cryptocurrency currency (`fsym`) and the target currency (`tsym`).
+       - The limit on the number of data points to fetch (up to 2000 entries).
+     - Makes a GET request to the CryptoCompare API and processes the response.
+     - Validates that the data contains the expected structure; if successful, it creates a pandas DataFrame with columns for Date, Open, High, Low, and Close prices.
+     - Returns the DataFrame. If no data is available, it raises a `ValueError`.
+
+3. **Function to Calculate Market Metrics**:
+   - **`calculate_metrics(df, variable1=7, variable2=5)`**:
+     - Takes a DataFrame (`df`) and two optional variables (`variable1` and `variable2`), where `variable1` typically represents a window for rolling calculations and `variable2` indicates how many days' worth of future data to generate metrics for.
+     - Computes new columns in the DataFrame for:
+       - The highest high price over the last `variable1` days.
+       - The number of days since that highest price occurred.
+       - The percentage difference from that highest price.
+       - The lowest low price over the last `variable1` days, similarly calculating days since and percentage difference from that low.
+     - For the next `variable2` days:
+       - It shifts the high and low prices backward to forecast future values and calculates the percentage difference from the closing price.
+     - Returns the updated DataFrame with all the calculated metrics.
+
+4. **Function to Export Data to Excel**:
+   - **`export_to_excel(dataframes, filename="crypto_data.xlsx")`**:
+     - Takes a dictionary of DataFrames (`dataframes`) and an optional filename.
+     - Uses `pandas.ExcelWriter` with the openpyxl engine to create a new Excel file.
+     - Iterates over the dictionary items, writing each DataFrame to a separate sheet in the Excel file.
+     - Prints a confirmation message once the data is successfully written.
+
+5. **Main Execution Block**:
+   - The script checks if it's running as the main module and defines a list of cryptocurrency pairs and a start date for data retrieval.
+   - Initializes an empty dictionary to hold DataFrames for each cryptocurrency.
+   - Iterates over the list of `crypto_pairs`:
+     - For each pair, it fetches the data using `fetch_crypto_data` and prints a preview of the fetched data.
+     - Then it calculates the necessary metrics using `calculate_metrics` and stores the resulting DataFrame in the `dataframes` dictionary, replacing the '/' in the pair name with '_' for valid sheet names.
+   - Finally, it calls `export_to_excel` to write the collected data into an Excel file named "crypto_data.xlsx".
+
+### Summary
+This script effectively automates the process of retrieving historical cryptocurrency price data, computes useful metrics for analysis, and neatly organizes the results for further examination in an Excel format. This can be particularly useful for traders and analysts interested in historical trends and price movements in the cryptocurrency market.
