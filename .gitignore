@@ -1,0 +1,40 @@
+# Python-specific
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Environment variables
+.env
+
+# Data files
+*.xlsx
+*.csv
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Logs
+*.log
+
+# Python virtual environment
+venv/
+env/
+ENV/
+.venv/
+.virtualenv/
+
+# IDE and editor specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# System files
+.DS_Store
+Thumbs.db
+
+# PyInstaller
+dist/
+build/
