@@ -1,0 +1,34 @@
+CryptoCompare Comprehensive Data Access:
+
+Provides real-time and historical data for over 5,600 cryptocurrencies and 260,000 currency pairs​
+APIORB
+​
+CRYPTOCOMPARE
+.
+1.Market and Pricing Information:
+
+Users can access various metrics including price, volume, market cap, and exchange data​
+APIORB
+.
+2.High Availability:
+
+The API is designed for scalability, ensuring reliable data delivery even during peak market activity​
+CRYPTOCOMPARE
+.
+3.API Call Limits:
+
+The free tier has restrictions on the number of API calls per day compared to paid tiers​
+CryptoCompare offers a free API tier that allows users to make up to 100 calls per day
+.
+4.No Cost:
+
+It is entirely free to use, making it suitable for individual developers, traders, and financial analysts looking to integrate cryptocurrency data into their applications​
+APIORB
+
+
+
+5.Data Coverage:
+
+CryptoCompare offers extensive market data, covering over 5,600 coins and more than 260,000 currency pairs. This breadth is significant compared to some competitors like CoinGecko and CoinMarketCap,
+
+CryptoCompare potentially more accessible for casual usersal-Time vs. Historical Data

@@ -1,0 +1,69 @@
+Project Overview
+
+The project involves retrieving historical cryptocurrency data, calculating various trading metrics, and training a machine learning model to predict future price differences.
+
+Code Solution Approach
+
+API  environment activation:
+$env:CRYPTO_API_KEY = "5337b23ee9ffb7072ab6415a7375677b1654699ee50d22525a5273048a4e0bdb"
+$env:CRYPTO_API_URL = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR&api_key=5337b23ee9ffb7072ab6415a7375677b1654699ee50d22525a5273048a4e0bdb"
+
+The solution consists of two main Python files:
+
+1. data_retrieval.py: Retrieves historical cryptocurrency data using the CryptoCompare API, calculates trading metrics, and exports the data to an Excel file.
+
+2. ml_model.py: Trains a machine learning model using the calculated metrics to predict future price differences.
+
+Key Functions and Steps
+data_retrieval.py
+
+1. fetch_crypto_data: Retrieves historical cryptocurrency data using the CryptoCompare API.
+
+2. calculate_metrics: Calculates various trading metrics, including highest/lowest prices, percentage differences, and days since high/low.
+
+3. export_to_excel: Exports the calculated metrics to an Excel file.
+
+ml_model.py:
+
+1. calculate_future_metrics: Calculates future metrics based on the predicted prices.
+
+2. train_model: Trains a random forest regressor model to predict future price differences.
+
+3. predict_outcomes: Uses the trained model to predict future price differences based on input values.
+
+Output
+
+The output includes:
+
+1. An Excel file (crypto_data.xlsx) containing the retrieved historical data and calculated metrics.
+
+2. A trained machine learning model (model_high.pkl and model_low.pkl) that predicts future price differences.
+
+3. Predicted percentage differences from high and low prices for a given input.
+
+Example Output
+
+
+Predicted % Difference from High for 5 Days: 25.92%
+Predicted % Difference from Low for 5 Days: 16.11%
+
+
+This indicates that, based on the input values, the model predicts a 25.92% difference from the high price and a 16.11% difference from the low price over the next 5 days.
+
+Code Explanation
+
+The code uses various libraries, including:
+
+- requests for API calls
+- pandas for data manipulation
+- openpyxl for Excel export
+- scikit-learn for machine learning
+
+The code follows best practices, including:
+
+- Clear function names and documentation
+- Error handling
+- Code organization
+
+The machine learning model uses a random forest regressor, which is suitable for predicting continuous values. The model is trained on the calculated metrics and evaluated using mean squared error.
+

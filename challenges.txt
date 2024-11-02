@@ -1,0 +1,19 @@
+Challenges faced:
+1.API Key Management
+Challenge: Ensuring that the API key is stored securely in environment variables can be tricky, especially for those new to Python. If the key is not set, the code will raise an error.
+
+solution:$env:CRYPTO_API_KEY = "5337b23ee9ffb7072ab6415a7375677b1654699ee50d22525a5273048a4e0bdb"
+$env:CRYPTO_API_URL = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,JPY,EUR&api_key=5337b23ee9ffb7072ab6415a7375677b1654699ee50d22525a5273048a4e0bdb"
+
+
+2.Data Handling
+Challenge: The data retrieved from the API can sometimes be incomplete or structured differently than expected, leading to errors in processing.
+Solution: Implement checks to handle different data structures and missing values. Adding logging to track the data retrieval process can also help debug issues.
+
+3. Metrics Calculation
+Challenge: Rolling calculations can produce NaN values for the first few rows of the DataFrame. This may lead to issues during model training.
+Solution: Use the dropna() method to remove rows with missing values before training the model.
+
+4.User Input Validation
+Challenge: The code relies on user input for predictions, which can lead to errors if non-numerical values are entered.
+Solution: Implement better input validation and error handling to ensure that the inputs are valid numeric types.
