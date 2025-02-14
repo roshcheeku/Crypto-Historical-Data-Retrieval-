@@ -7,7 +7,7 @@ import openpyxl
 # Step 1: Identify a Reliable API for Crypto Data Retrieval 1. API
 def fetch_crypto_data(crypto_pair,start_date):
     api_key = os.getenv('CRYPTO_API_KEY')
-    base_url = "https://min-api.cryptocompare.com/data/v2/histoday"
+    base_url = "base_url"
     if not api_key:
         raise ValueError("API KEY NOT SET IN ENVIRONMENT VARIABLES")
     
